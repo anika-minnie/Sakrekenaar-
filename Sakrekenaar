@@ -1,0 +1,90 @@
+# n Basiese Sakrekenaar wat op n command line werk
+# Die sakerekenaar kan Plus, Minus, Maal en deel
+# Die gebruiker kan kies om die sakrekenaar te exit of om die uitsette te verwyder 
+
+# Die funksie wat 2 nommers by mekaar tel 
+def add(a,b):
+    return a+b
+
+# Die funksie wat 2 getalle by mekaar aftrek
+def subtract(a,b):
+    return a-b
+
+# Die funksie wat twee getalle met mekaar maal 
+def multiply(a,b):
+    return a*b
+
+# Die funksie wat 2 getalle met mekaar deel 
+def divide(a,b):
+    if b == 0:
+# Die funksie wat keer dat getalle deur 0 kan deel nie 
+        return "Error: Division by zero is undefined."
+    return a/b
+
+# Die funksie wat die uitsette uitvee
+def clear_screen():
+    import os 
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+# Sentinel variables om die loop te beheer
+def main():
+    running = True 
+
+# Die hoof funksies wat die sakrekenaar laat loop 
+# Die uitsette wat gaan wys as die program gerun word 
+    while running:
+        print("===Welcome to the command line calculator!===")
+        print("Select operation:")
+        print("1. Add")
+        print("2. Subtract")
+        print("3. Multiply")
+        print("4. Divide ")
+        print("5. Clear output")
+        print("6. Exit")
+        choice = input("Enter choice (1/2/3/4/5/6):")
+
+        if choice in ['1', '2', '3', '4']:
+            try:
+                num1 = float(input("enter first number:"))
+                num2 = float(input("Enter second number:"))
+            except ValueError:
+                print("Invalid input. Please enter numbers only.")
+                input("Press Enter to continue...")
+                clear_screen()
+                continue
+
+            if choice =='1':
+                result = add(num1, num2)
+                print(f"{num1} + {num2} = {result}")
+            elif choice == '2':
+                result = subtract(num1, num2)
+                print(f"{num1} - {num2} = {result}")
+            elif choice == '3':
+                result = multiply(num1, num2)
+                print(f"{num1} * {num2} = {result}")
+            elif choice =='4':
+                result = divide(num1, num2)
+                print(f"{num1} / {num2} = {result}")
+            elif choice == '5':
+                clear_screen()
+                continue
+    # Die funksie om die loop te stop         
+            elif choice == '6':
+                print("Exit calculator. Goodbyey!")
+                running = False 
+            else: 
+                print("invalid choice. Try again.")
+
+# Die funksie wat die skerm en die uitsette skoon maak 
+            if running:
+                input("Press enter to continue...")
+                clear_screen()
+
+
+if __name__ == "__main__":
+    main()
+
+    
+
+            
+
